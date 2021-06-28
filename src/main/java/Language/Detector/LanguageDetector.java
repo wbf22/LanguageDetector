@@ -65,6 +65,8 @@ public class LanguageDetector {
   private Map<String, Integer> mkd = new HashMap<>();
   private Map<String, Integer> mlg = new HashMap<>();
   private Map<String, Integer> msa = new HashMap<>();
+  private Map<String, Integer> mya = new HashMap<>();
+  private Map<String, Integer> nld = new HashMap<>();
   private Map<String, Integer> mal = new HashMap<>();
   private Map<String, Integer> mlt = new HashMap<>();
   private Map<String, Integer> mri = new HashMap<>();
@@ -135,24 +137,115 @@ public class LanguageDetector {
     while (stringTokenizer.hasMoreTokens()) textWords.add(stringTokenizer.nextToken());
 
     Map<ISO2Code, Integer> matches = new HashMap<>();
-    for (String word : textWords) {
-      if (afr.get(word) != null) { matches.put(ISO2Code.afr, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-      if (alb.get(word) != null) { matches.put(ISO2Code.alb, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-      if (amh.get(word) != null) { matches.put(ISO2Code.amh, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-      if (ara.get(word) != null) { matches.put(ISO2Code.ara, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-      if (arm.get(word) != null) { matches.put(ISO2Code.arm, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-      if (aze.get(word) != null) { matches.put(ISO2Code.aze, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-      if (bel.get(word) != null) { matches.put(ISO2Code.bel, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-      if (ben.get(word) != null) { matches.put(ISO2Code.ben, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-      if (bos.get(word) != null) { matches.put(ISO2Code.bos, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-      if (bul.get(word) != null) { matches.put(ISO2Code.bul, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-      if (bur.get(word) != null) { matches.put(ISO2Code.bur, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-      if (cat.get(word) != null) { matches.put(ISO2Code.cat, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-      if (ceb.get(word) != null) { matches.put(ISO2Code.ceb, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-      if (chi.get(word) != null) { matches.put(ISO2Code.chi, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-      if (eng.get(word) != null) { matches.put(ISO2Code.eng, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-      if (eus.get(word) != null) { matches.put(ISO2Code.eus, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-    }
+//    for (String word : textWords) {
+//      if (afr.get(word) != null) { matches.put(ISO2Code.afr, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (alb.get(word) != null) { matches.put(ISO2Code.alb, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (amh.get(word) != null) { matches.put(ISO2Code.amh, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (ara.get(word) != null) { matches.put(ISO2Code.ara, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (arm.get(word) != null) { matches.put(ISO2Code.arm, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (aze.get(word) != null) { matches.put(ISO2Code.aze, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (bel.get(word) != null) { matches.put(ISO2Code.bel, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (ben.get(word) != null) { matches.put(ISO2Code.ben, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (bos.get(word) != null) { matches.put(ISO2Code.bos, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (bul.get(word) != null) { matches.put(ISO2Code.bul, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (bur.get(word) != null) { matches.put(ISO2Code.bur, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (cat.get(word) != null) { matches.put(ISO2Code.cat, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (ceb.get(word) != null) { matches.put(ISO2Code.ceb, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (ces.get(word) != null) { matches.put(ISO2Code.ces, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (chi.get(word) != null) { matches.put(ISO2Code.chi, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (cos.get(word) != null) { matches.put(ISO2Code.cos, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (cym.get(word) != null) { matches.put(ISO2Code.cym, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (dan.get(word) != null) { matches.put(ISO2Code.dan, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (deu.get(word) != null) { matches.put(ISO2Code.deu, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (ell.get(word) != null) { matches.put(ISO2Code.ell, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (eng.get(word) != null) { matches.put(ISO2Code.eng, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (epo.get(word) != null) { matches.put(ISO2Code.epo, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (est.get(word) != null) { matches.put(ISO2Code.est, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (eus.get(word) != null) { matches.put(ISO2Code.eus, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (fas.get(word) != null) { matches.put(ISO2Code.fas, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (fil.get(word) != null) { matches.put(ISO2Code.fil, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (fin.get(word) != null) { matches.put(ISO2Code.fin, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (fre.get(word) != null) { matches.put(ISO2Code.fre, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (gla.get(word) != null) { matches.put(ISO2Code.gla, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (gle.get(word) != null) { matches.put(ISO2Code.gle, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (glg.get(word) != null) { matches.put(ISO2Code.glg, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (guj.get(word) != null) { matches.put(ISO2Code.guj, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (hat.get(word) != null) { matches.put(ISO2Code.hat, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (hau.get(word) != null) { matches.put(ISO2Code.hau, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (haw.get(word) != null) { matches.put(ISO2Code.haw, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (heb.get(word) != null) { matches.put(ISO2Code.heb, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (hin.get(word) != null) { matches.put(ISO2Code.hin, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (hmn.get(word) != null) { matches.put(ISO2Code.hmn, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (hun.get(word) != null) { matches.put(ISO2Code.hun, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (ibo.get(word) != null) { matches.put(ISO2Code.ibo, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (ind.get(word) != null) { matches.put(ISO2Code.ind, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (isl.get(word) != null) { matches.put(ISO2Code.isl, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (ita.get(word) != null) { matches.put(ISO2Code.ita, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (jav.get(word) != null) { matches.put(ISO2Code.jav, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (jpn.get(word) != null) { matches.put(ISO2Code.jpn, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (kan.get(word) != null) { matches.put(ISO2Code.kan, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (kat.get(word) != null) { matches.put(ISO2Code.kat, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (kaz.get(word) != null) { matches.put(ISO2Code.kaz, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (khm.get(word) != null) { matches.put(ISO2Code.khm, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (kin.get(word) != null) { matches.put(ISO2Code.kin, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (kir.get(word) != null) { matches.put(ISO2Code.kir, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (kor.get(word) != null) { matches.put(ISO2Code.kor, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (kur.get(word) != null) { matches.put(ISO2Code.kur, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (lao.get(word) != null) { matches.put(ISO2Code.lao, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (lat.get(word) != null) { matches.put(ISO2Code.lat, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (lav.get(word) != null) { matches.put(ISO2Code.lav, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (lit.get(word) != null) { matches.put(ISO2Code.lit, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (ltz.get(word) != null) { matches.put(ISO2Code.ltz, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (mal.get(word) != null) { matches.put(ISO2Code.mal, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (mar.get(word) != null) { matches.put(ISO2Code.mar, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (mkd.get(word) != null) { matches.put(ISO2Code.mkd, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (mlg.get(word) != null) { matches.put(ISO2Code.mlg, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (mlt.get(word) != null) { matches.put(ISO2Code.mlt, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (mon.get(word) != null) { matches.put(ISO2Code.mon, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (mri.get(word) != null) { matches.put(ISO2Code.mri, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (msa.get(word) != null) { matches.put(ISO2Code.msa, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (mya.get(word) != null) { matches.put(ISO2Code.mya, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (nep.get(word) != null) { matches.put(ISO2Code.nep, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (nld.get(word) != null) { matches.put(ISO2Code.nld, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (nor.get(word) != null) { matches.put(ISO2Code.nor, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (nya.get(word) != null) { matches.put(ISO2Code.nya, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (ori.get(word) != null) { matches.put(ISO2Code.ori, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (pan.get(word) != null) { matches.put(ISO2Code.pan, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (pol.get(word) != null) { matches.put(ISO2Code.pol, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (por.get(word) != null) { matches.put(ISO2Code.por, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (pus.get(word) != null) { matches.put(ISO2Code.pus, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (ron.get(word) != null) { matches.put(ISO2Code.ron, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (rus.get(word) != null) { matches.put(ISO2Code.rus, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (sin.get(word) != null) { matches.put(ISO2Code.sin, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (slk.get(word) != null) { matches.put(ISO2Code.slk, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (slv.get(word) != null) { matches.put(ISO2Code.slv, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (smo.get(word) != null) { matches.put(ISO2Code.smo, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (sna.get(word) != null) { matches.put(ISO2Code.sna, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (snd.get(word) != null) { matches.put(ISO2Code.snd, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (som.get(word) != null) { matches.put(ISO2Code.som, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (sot.get(word) != null) { matches.put(ISO2Code.sot, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (spa.get(word) != null) { matches.put(ISO2Code.spa, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (srp.get(word) != null) { matches.put(ISO2Code.srp, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (sun.get(word) != null) { matches.put(ISO2Code.sun, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (swa.get(word) != null) { matches.put(ISO2Code.swa, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (swe.get(word) != null) { matches.put(ISO2Code.swe, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (tam.get(word) != null) { matches.put(ISO2Code.tam, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (tat.get(word) != null) { matches.put(ISO2Code.tat, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (tel.get(word) != null) { matches.put(ISO2Code.tel, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (tgk.get(word) != null) { matches.put(ISO2Code.tgk, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (tha.get(word) != null) { matches.put(ISO2Code.tha, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (tuk.get(word) != null) { matches.put(ISO2Code.tuk, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (tur.get(word) != null) { matches.put(ISO2Code.tur, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (uig.get(word) != null) { matches.put(ISO2Code.uig, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (ukr.get(word) != null) { matches.put(ISO2Code.ukr, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (urd.get(word) != null) { matches.put(ISO2Code.urd, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (uzb.get(word) != null) { matches.put(ISO2Code.uzb, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (vie.get(word) != null) { matches.put(ISO2Code.vie, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (xho.get(word) != null) { matches.put(ISO2Code.xho, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (yid.get(word) != null) { matches.put(ISO2Code.yid, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (yor.get(word) != null) { matches.put(ISO2Code.yor, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//      if (zul.get(word) != null) { matches.put(ISO2Code.zul, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
+//    }
 
 
     Map.Entry<ISO2Code, Integer> matchedLanguage = new AbstractMap.SimpleEntry<ISO2Code, Integer>(ISO2Code.eng, (matches.get(ISO2Code.eng) == null) ? 0 : matches.get(ISO2Code.eng));
@@ -215,285 +308,288 @@ public class LanguageDetector {
     scanner = new Scanner(new File("src/main/resources/chi.txt"));
     while(scanner.hasNext()){ chi.put(scanner.next(), 1); }
 
-//    scanner = new Scanner(new File("src/main/resources/cos.txt"));
-//    while(scanner.hasNext()){ cos.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/ces.txt"));
-//    while(scanner.hasNext()){ ces.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/dan.txt"));
-//    while(scanner.hasNext()){ dan.put(scanner.next(), 1); }
-//
+    scanner = new Scanner(new File("src/main/resources/cos.txt"));
+    while(scanner.hasNext()){ cos.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/ces.txt"));
+    while(scanner.hasNext()){ ces.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/dan.txt"));
+    while(scanner.hasNext()){ dan.put(scanner.next(), 1); }
+
     scanner = new Scanner(new File("src/main/resources/eng.txt"));
     while(scanner.hasNext()){ eng.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/epo.txt"));
-//    while(scanner.hasNext()){ epo.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/est.txt"));
-//    while(scanner.hasNext()){ est.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/fil.txt"));
-//    while(scanner.hasNext()){ fil.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/fin.txt"));
-//    while(scanner.hasNext()){ fin.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/fre.txt"));
-//    while(scanner.hasNext()){ fre.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/glg.txt"));
-//    while(scanner.hasNext()){ glg.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/kat.txt"));
-//    while(scanner.hasNext()){ kat.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/deu.txt"));
-//    while(scanner.hasNext()){ deu.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/ell.txt"));
-//    while(scanner.hasNext()){ ell.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/guj.txt"));
-//    while(scanner.hasNext()){ guj.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/hat.txt"));
-//    while(scanner.hasNext()){ hat.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/hau.txt"));
-//    while(scanner.hasNext()){ hau.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/haw.txt"));
-//    while(scanner.hasNext()){ haw.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/heb.txt"));
-//    while(scanner.hasNext()){ heb.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/hin.txt"));
-//    while(scanner.hasNext()){ hin.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/hmn.txt"));
-//    while(scanner.hasNext()){ hmn.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/hun.txt"));
-//    while(scanner.hasNext()){ hun.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/isl.txt"));
-//    while(scanner.hasNext()){ isl.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/ibo.txt"));
-//    while(scanner.hasNext()){ ibo.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/ind.txt"));
-//    while(scanner.hasNext()){ ind.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/gle.txt"));
-//    while(scanner.hasNext()){ gle.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/ita.txt"));
-//    while(scanner.hasNext()){ ita.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/jpn.txt"));
-//    while(scanner.hasNext()){ jpn.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/jav.txt"));
-//    while(scanner.hasNext()){ jav.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/kan.txt"));
-//    while(scanner.hasNext()){ kan.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/kaz.txt"));
-//    while(scanner.hasNext()){ kaz.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/khm.txt"));
-//    while(scanner.hasNext()){ khm.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/kin.txt"));
-//    while(scanner.hasNext()){ kin.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/kor.txt"));
-//    while(scanner.hasNext()){ kor.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/kur.txt"));
-//    while(scanner.hasNext()){ kur.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/kir.txt"));
-//    while(scanner.hasNext()){ kir.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/lao.txt"));
-//    while(scanner.hasNext()){ lao.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/lat.txt"));
-//    while(scanner.hasNext()){ lat.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/lav.txt"));
-//    while(scanner.hasNext()){ lav.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/lit.txt"));
-//    while(scanner.hasNext()){ lit.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/ltz.txt"));
-//    while(scanner.hasNext()){ ltz.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/mkd.txt"));
-//    while(scanner.hasNext()){ mkd.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/mlg.txt"));
-//    while(scanner.hasNext()){ mlg.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/msa.txt"));
-//    while(scanner.hasNext()){ msa.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/mal.txt"));
-//    while(scanner.hasNext()){ mal.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/mlt.txt"));
-//    while(scanner.hasNext()){ mlt.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/mri.txt"));
-//    while(scanner.hasNext()){ mri.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/mar.txt"));
-//    while(scanner.hasNext()){ mar.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/mon.txt"));
-//    while(scanner.hasNext()){ mon.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/nep.txt"));
-//    while(scanner.hasNext()){ nep.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/nor.txt"));
-//    while(scanner.hasNext()){ nor.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/nya.txt"));
-//    while(scanner.hasNext()){ nya.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/ori.txt"));
-//    while(scanner.hasNext()){ ori.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/pus.txt"));
-//    while(scanner.hasNext()){ pus.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/fas.txt"));
-//    while(scanner.hasNext()){ fas.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/pol.txt"));
-//    while(scanner.hasNext()){ pol.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/por.txt"));
-//    while(scanner.hasNext()){ por.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/pan.txt"));
-//    while(scanner.hasNext()){ pan.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/ron.txt"));
-//    while(scanner.hasNext()){ ron.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/rus.txt"));
-//    while(scanner.hasNext()){ rus.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/smo.txt"));
-//    while(scanner.hasNext()){ smo.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/gla.txt"));
-//    while(scanner.hasNext()){ gla.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/srp.txt"));
-//    while(scanner.hasNext()){ srp.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/sna.txt"));
-//    while(scanner.hasNext()){ sna.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/snd.txt"));
-//    while(scanner.hasNext()){ snd.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/sin.txt"));
-//    while(scanner.hasNext()){ sin.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/slk.txt"));
-//    while(scanner.hasNext()){ slk.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/slv.txt"));
-//    while(scanner.hasNext()){ slv.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/som.txt"));
-//    while(scanner.hasNext()){ som.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/sot.txt"));
-//    while(scanner.hasNext()){ sot.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/spa.txt"));
-//    while(scanner.hasNext()){ spa.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/sun.txt"));
-//    while(scanner.hasNext()){ sun.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/swa.txt"));
-//    while(scanner.hasNext()){ swa.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/swe.txt"));
-//    while(scanner.hasNext()){ swe.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/tgk.txt"));
-//    while(scanner.hasNext()){ tgk.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/tam.txt"));
-//    while(scanner.hasNext()){ tam.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/tat.txt"));
-//    while(scanner.hasNext()){ tat.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/tel.txt"));
-//    while(scanner.hasNext()){ tel.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/tha.txt"));
-//    while(scanner.hasNext()){ tha.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/tur.txt"));
-//    while(scanner.hasNext()){ tur.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/tuk.txt"));
-//    while(scanner.hasNext()){ tuk.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/ukr.txt"));
-//    while(scanner.hasNext()){ ukr.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/urd.txt"));
-//    while(scanner.hasNext()){ urd.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/uig.txt"));
-//    while(scanner.hasNext()){ uig.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/uzb.txt"));
-//    while(scanner.hasNext()){ uzb.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/vie.txt"));
-//    while(scanner.hasNext()){ vie.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/cym.txt"));
-//    while(scanner.hasNext()){ cym.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/fry.txt"));
-//    while(scanner.hasNext()){ fry.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/xho.txt"));
-//    while(scanner.hasNext()){ xho.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/yid.txt"));
-//    while(scanner.hasNext()){ yid.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/yor.txt"));
-//    while(scanner.hasNext()){ yor.put(scanner.next(), 1); }
-//
-//    scanner = new Scanner(new File("src/main/resources/zul.txt"));
-//    while(scanner.hasNext()){ zul.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/epo.txt"));
+    while(scanner.hasNext()){ epo.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/est.txt"));
+    while(scanner.hasNext()){ est.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/fil.txt"));
+    while(scanner.hasNext()){ fil.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/fin.txt"));
+    while(scanner.hasNext()){ fin.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/fre.txt"));
+    while(scanner.hasNext()){ fre.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/glg.txt"));
+    while(scanner.hasNext()){ glg.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/kat.txt"));
+    while(scanner.hasNext()){ kat.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/deu.txt"));
+    while(scanner.hasNext()){ deu.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/ell.txt"));
+    while(scanner.hasNext()){ ell.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/guj.txt"));
+    while(scanner.hasNext()){ guj.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/hat.txt"));
+    while(scanner.hasNext()){ hat.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/hau.txt"));
+    while(scanner.hasNext()){ hau.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/haw.txt"));
+    while(scanner.hasNext()){ haw.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/heb.txt"));
+    while(scanner.hasNext()){ heb.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/hin.txt"));
+    while(scanner.hasNext()){ hin.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/hmn.txt"));
+    while(scanner.hasNext()){ hmn.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/hun.txt"));
+    while(scanner.hasNext()){ hun.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/isl.txt"));
+    while(scanner.hasNext()){ isl.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/ibo.txt"));
+    while(scanner.hasNext()){ ibo.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/ind.txt"));
+    while(scanner.hasNext()){ ind.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/gle.txt"));
+    while(scanner.hasNext()){ gle.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/ita.txt"));
+    while(scanner.hasNext()){ ita.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/jpn.txt"));
+    while(scanner.hasNext()){ jpn.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/jav.txt"));
+    while(scanner.hasNext()){ jav.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/kan.txt"));
+    while(scanner.hasNext()){ kan.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/kaz.txt"));
+    while(scanner.hasNext()){ kaz.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/khm.txt"));
+    while(scanner.hasNext()){ khm.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/kin.txt"));
+    while(scanner.hasNext()){ kin.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/kor.txt"));
+    while(scanner.hasNext()){ kor.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/kur.txt"));
+    while(scanner.hasNext()){ kur.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/kir.txt"));
+    while(scanner.hasNext()){ kir.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/lao.txt"));
+    while(scanner.hasNext()){ lao.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/lat.txt"));
+    while(scanner.hasNext()){ lat.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/lav.txt"));
+    while(scanner.hasNext()){ lav.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/lit.txt"));
+    while(scanner.hasNext()){ lit.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/ltz.txt"));
+    while(scanner.hasNext()){ ltz.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/mkd.txt"));
+    while(scanner.hasNext()){ mkd.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/mlg.txt"));
+    while(scanner.hasNext()){ mlg.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/msa.txt"));
+    while(scanner.hasNext()){ msa.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/mya.txt"));
+    while(scanner.hasNext()){ mya.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/nld.txt"));
+    while(scanner.hasNext()){ nld.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/mal.txt"));
+    while(scanner.hasNext()){ mal.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/mlt.txt"));
+    while(scanner.hasNext()){ mlt.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/mri.txt"));
+    while(scanner.hasNext()){ mri.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/mar.txt"));
+    while(scanner.hasNext()){ mar.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/mon.txt"));
+    while(scanner.hasNext()){ mon.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/nep.txt"));
+    while(scanner.hasNext()){ nep.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/nor.txt"));
+    while(scanner.hasNext()){ nor.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/nya.txt"));
+    while(scanner.hasNext()){ nya.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/ori.txt"));
+    while(scanner.hasNext()){ ori.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/pus.txt"));
+    while(scanner.hasNext()){ pus.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/fas.txt"));
+    while(scanner.hasNext()){ fas.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/pol.txt"));
+    while(scanner.hasNext()){ pol.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/por.txt"));
+    while(scanner.hasNext()){ por.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/pan.txt"));
+    while(scanner.hasNext()){ pan.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/ron.txt"));
+    while(scanner.hasNext()){ ron.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/rus.txt"));
+    while(scanner.hasNext()){ rus.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/smo.txt"));
+    while(scanner.hasNext()){ smo.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/gla.txt"));
+    while(scanner.hasNext()){ gla.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/srp.txt"));
+    while(scanner.hasNext()){ srp.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/sna.txt"));
+    while(scanner.hasNext()){ sna.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/snd.txt"));
+    while(scanner.hasNext()){ snd.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/sin.txt"));
+    while(scanner.hasNext()){ sin.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/slk.txt"));
+    while(scanner.hasNext()){ slk.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/slv.txt"));
+    while(scanner.hasNext()){ slv.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/som.txt"));
+    while(scanner.hasNext()){ som.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/sot.txt"));
+    while(scanner.hasNext()){ sot.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/spa.txt"));
+    while(scanner.hasNext()){ spa.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/sun.txt"));
+    while(scanner.hasNext()){ sun.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/swa.txt"));
+    while(scanner.hasNext()){ swa.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/swe.txt"));
+    while(scanner.hasNext()){ swe.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/tgk.txt"));
+    while(scanner.hasNext()){ tgk.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/tam.txt"));
+    while(scanner.hasNext()){ tam.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/tat.txt"));
+    while(scanner.hasNext()){ tat.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/tel.txt"));
+    while(scanner.hasNext()){ tel.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/tha.txt"));
+    while(scanner.hasNext()){ tha.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/tur.txt"));
+    while(scanner.hasNext()){ tur.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/tuk.txt"));
+    while(scanner.hasNext()){ tuk.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/ukr.txt"));
+    while(scanner.hasNext()){ ukr.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/urd.txt"));
+    while(scanner.hasNext()){ urd.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/uig.txt"));
+    while(scanner.hasNext()){ uig.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/uzb.txt"));
+    while(scanner.hasNext()){ uzb.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/vie.txt"));
+    while(scanner.hasNext()){ vie.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/cym.txt"));
+    while(scanner.hasNext()){ cym.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/xho.txt"));
+    while(scanner.hasNext()){ xho.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/yid.txt"));
+    while(scanner.hasNext()){ yid.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/yor.txt"));
+    while(scanner.hasNext()){ yor.put(scanner.next(), 1); }
+
+    scanner = new Scanner(new File("src/main/resources/zul.txt"));
+    while(scanner.hasNext()){ zul.put(scanner.next(), 1); }
 
   }
 
 
   public static void main(String args[]){
     LanguageDetector languageDetector = new LanguageDetector();
-    String language = languageDetector.detectLanguage("սեմինար", true);
+    String language = languageDetector.detectLanguage("हे कसे आहे?", true);
     System.out.println(language);
   }
 
