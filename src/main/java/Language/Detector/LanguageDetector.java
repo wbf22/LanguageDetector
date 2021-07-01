@@ -110,7 +110,6 @@ public class LanguageDetector {
   private Map<String, Integer> uzb = new HashMap<>();
   private Map<String, Integer> vie = new HashMap<>();
   private Map<String, Integer> cym = new HashMap<>();
-  private Map<String, Integer> fry = new HashMap<>();
   private Map<String, Integer> xho = new HashMap<>();
   private Map<String, Integer> yid = new HashMap<>();
   private Map<String, Integer> yor = new HashMap<>();
@@ -137,115 +136,115 @@ public class LanguageDetector {
     while (stringTokenizer.hasMoreTokens()) textWords.add(stringTokenizer.nextToken());
 
     Map<ISO2Code, Integer> matches = new HashMap<>();
-//    for (String word : textWords) {
-//      if (afr.get(word) != null) { matches.put(ISO2Code.afr, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (alb.get(word) != null) { matches.put(ISO2Code.alb, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (amh.get(word) != null) { matches.put(ISO2Code.amh, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (ara.get(word) != null) { matches.put(ISO2Code.ara, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (arm.get(word) != null) { matches.put(ISO2Code.arm, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (aze.get(word) != null) { matches.put(ISO2Code.aze, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (bel.get(word) != null) { matches.put(ISO2Code.bel, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (ben.get(word) != null) { matches.put(ISO2Code.ben, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (bos.get(word) != null) { matches.put(ISO2Code.bos, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (bul.get(word) != null) { matches.put(ISO2Code.bul, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (bur.get(word) != null) { matches.put(ISO2Code.bur, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (cat.get(word) != null) { matches.put(ISO2Code.cat, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (ceb.get(word) != null) { matches.put(ISO2Code.ceb, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (ces.get(word) != null) { matches.put(ISO2Code.ces, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (chi.get(word) != null) { matches.put(ISO2Code.chi, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (cos.get(word) != null) { matches.put(ISO2Code.cos, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (cym.get(word) != null) { matches.put(ISO2Code.cym, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (dan.get(word) != null) { matches.put(ISO2Code.dan, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (deu.get(word) != null) { matches.put(ISO2Code.deu, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (ell.get(word) != null) { matches.put(ISO2Code.ell, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (eng.get(word) != null) { matches.put(ISO2Code.eng, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (epo.get(word) != null) { matches.put(ISO2Code.epo, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (est.get(word) != null) { matches.put(ISO2Code.est, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (eus.get(word) != null) { matches.put(ISO2Code.eus, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (fas.get(word) != null) { matches.put(ISO2Code.fas, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (fil.get(word) != null) { matches.put(ISO2Code.fil, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (fin.get(word) != null) { matches.put(ISO2Code.fin, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (fre.get(word) != null) { matches.put(ISO2Code.fre, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (gla.get(word) != null) { matches.put(ISO2Code.gla, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (gle.get(word) != null) { matches.put(ISO2Code.gle, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (glg.get(word) != null) { matches.put(ISO2Code.glg, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (guj.get(word) != null) { matches.put(ISO2Code.guj, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (hat.get(word) != null) { matches.put(ISO2Code.hat, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (hau.get(word) != null) { matches.put(ISO2Code.hau, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (haw.get(word) != null) { matches.put(ISO2Code.haw, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (heb.get(word) != null) { matches.put(ISO2Code.heb, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (hin.get(word) != null) { matches.put(ISO2Code.hin, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (hmn.get(word) != null) { matches.put(ISO2Code.hmn, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (hun.get(word) != null) { matches.put(ISO2Code.hun, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (ibo.get(word) != null) { matches.put(ISO2Code.ibo, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (ind.get(word) != null) { matches.put(ISO2Code.ind, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (isl.get(word) != null) { matches.put(ISO2Code.isl, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (ita.get(word) != null) { matches.put(ISO2Code.ita, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (jav.get(word) != null) { matches.put(ISO2Code.jav, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (jpn.get(word) != null) { matches.put(ISO2Code.jpn, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (kan.get(word) != null) { matches.put(ISO2Code.kan, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (kat.get(word) != null) { matches.put(ISO2Code.kat, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (kaz.get(word) != null) { matches.put(ISO2Code.kaz, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (khm.get(word) != null) { matches.put(ISO2Code.khm, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (kin.get(word) != null) { matches.put(ISO2Code.kin, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (kir.get(word) != null) { matches.put(ISO2Code.kir, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (kor.get(word) != null) { matches.put(ISO2Code.kor, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (kur.get(word) != null) { matches.put(ISO2Code.kur, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (lao.get(word) != null) { matches.put(ISO2Code.lao, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (lat.get(word) != null) { matches.put(ISO2Code.lat, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (lav.get(word) != null) { matches.put(ISO2Code.lav, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (lit.get(word) != null) { matches.put(ISO2Code.lit, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (ltz.get(word) != null) { matches.put(ISO2Code.ltz, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (mal.get(word) != null) { matches.put(ISO2Code.mal, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (mar.get(word) != null) { matches.put(ISO2Code.mar, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (mkd.get(word) != null) { matches.put(ISO2Code.mkd, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (mlg.get(word) != null) { matches.put(ISO2Code.mlg, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (mlt.get(word) != null) { matches.put(ISO2Code.mlt, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (mon.get(word) != null) { matches.put(ISO2Code.mon, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (mri.get(word) != null) { matches.put(ISO2Code.mri, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (msa.get(word) != null) { matches.put(ISO2Code.msa, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (mya.get(word) != null) { matches.put(ISO2Code.mya, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (nep.get(word) != null) { matches.put(ISO2Code.nep, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (nld.get(word) != null) { matches.put(ISO2Code.nld, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (nor.get(word) != null) { matches.put(ISO2Code.nor, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (nya.get(word) != null) { matches.put(ISO2Code.nya, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (ori.get(word) != null) { matches.put(ISO2Code.ori, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (pan.get(word) != null) { matches.put(ISO2Code.pan, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (pol.get(word) != null) { matches.put(ISO2Code.pol, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (por.get(word) != null) { matches.put(ISO2Code.por, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (pus.get(word) != null) { matches.put(ISO2Code.pus, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (ron.get(word) != null) { matches.put(ISO2Code.ron, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (rus.get(word) != null) { matches.put(ISO2Code.rus, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (sin.get(word) != null) { matches.put(ISO2Code.sin, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (slk.get(word) != null) { matches.put(ISO2Code.slk, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (slv.get(word) != null) { matches.put(ISO2Code.slv, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (smo.get(word) != null) { matches.put(ISO2Code.smo, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (sna.get(word) != null) { matches.put(ISO2Code.sna, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (snd.get(word) != null) { matches.put(ISO2Code.snd, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (som.get(word) != null) { matches.put(ISO2Code.som, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (sot.get(word) != null) { matches.put(ISO2Code.sot, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (spa.get(word) != null) { matches.put(ISO2Code.spa, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (srp.get(word) != null) { matches.put(ISO2Code.srp, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (sun.get(word) != null) { matches.put(ISO2Code.sun, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (swa.get(word) != null) { matches.put(ISO2Code.swa, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (swe.get(word) != null) { matches.put(ISO2Code.swe, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (tam.get(word) != null) { matches.put(ISO2Code.tam, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (tat.get(word) != null) { matches.put(ISO2Code.tat, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (tel.get(word) != null) { matches.put(ISO2Code.tel, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (tgk.get(word) != null) { matches.put(ISO2Code.tgk, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (tha.get(word) != null) { matches.put(ISO2Code.tha, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (tuk.get(word) != null) { matches.put(ISO2Code.tuk, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (tur.get(word) != null) { matches.put(ISO2Code.tur, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (uig.get(word) != null) { matches.put(ISO2Code.uig, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (ukr.get(word) != null) { matches.put(ISO2Code.ukr, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (urd.get(word) != null) { matches.put(ISO2Code.urd, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (uzb.get(word) != null) { matches.put(ISO2Code.uzb, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (vie.get(word) != null) { matches.put(ISO2Code.vie, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (xho.get(word) != null) { matches.put(ISO2Code.xho, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (yid.get(word) != null) { matches.put(ISO2Code.yid, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (yor.get(word) != null) { matches.put(ISO2Code.yor, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//      if (zul.get(word) != null) { matches.put(ISO2Code.zul, (matches.get(word) == null) ? 1 : matches.get(word).intValue() + 1); }
-//    }
+    for (String word : textWords) {
+      if (afr.get(word) != null) { matches.put(ISO2Code.afr, (matches.get(ISO2Code.afr) == null) ? 1 : matches.get(ISO2Code.afr).intValue() + 1); }
+      if (alb.get(word) != null) { matches.put(ISO2Code.alb, (matches.get(ISO2Code.alb) == null) ? 1 : matches.get(ISO2Code.alb).intValue() + 1); }
+      if (amh.get(word) != null) { matches.put(ISO2Code.amh, (matches.get(ISO2Code.amh) == null) ? 1 : matches.get(ISO2Code.amh).intValue() + 1); }
+      if (ara.get(word) != null) { matches.put(ISO2Code.ara, (matches.get(ISO2Code.ara) == null) ? 1 : matches.get(ISO2Code.ara).intValue() + 1); }
+      if (arm.get(word) != null) { matches.put(ISO2Code.arm, (matches.get(ISO2Code.arm) == null) ? 1 : matches.get(ISO2Code.arm).intValue() + 1); }
+      if (aze.get(word) != null) { matches.put(ISO2Code.aze, (matches.get(ISO2Code.aze) == null) ? 1 : matches.get(ISO2Code.aze).intValue() + 1); }
+      if (bel.get(word) != null) { matches.put(ISO2Code.bel, (matches.get(ISO2Code.bel) == null) ? 1 : matches.get(ISO2Code.bel).intValue() + 1); }
+      if (ben.get(word) != null) { matches.put(ISO2Code.ben, (matches.get(ISO2Code.ben) == null) ? 1 : matches.get(ISO2Code.ben).intValue() + 1); }
+      if (bos.get(word) != null) { matches.put(ISO2Code.bos, (matches.get(ISO2Code.bos) == null) ? 1 : matches.get(ISO2Code.bos).intValue() + 1); }
+      if (bul.get(word) != null) { matches.put(ISO2Code.bul, (matches.get(ISO2Code.bul) == null) ? 1 : matches.get(ISO2Code.bul).intValue() + 1); }
+      if (bur.get(word) != null) { matches.put(ISO2Code.bur, (matches.get(ISO2Code.bur) == null) ? 1 : matches.get(ISO2Code.bur).intValue() + 1); }
+      if (cat.get(word) != null) { matches.put(ISO2Code.cat, (matches.get(ISO2Code.cat) == null) ? 1 : matches.get(ISO2Code.cat).intValue() + 1); }
+      if (ceb.get(word) != null) { matches.put(ISO2Code.ceb, (matches.get(ISO2Code.ceb) == null) ? 1 : matches.get(ISO2Code.ceb).intValue() + 1); }
+      if (ces.get(word) != null) { matches.put(ISO2Code.ces, (matches.get(ISO2Code.ces) == null) ? 1 : matches.get(ISO2Code.ces).intValue() + 1); }
+      if (chi.get(word) != null) { matches.put(ISO2Code.chi, (matches.get(ISO2Code.chi) == null) ? 1 : matches.get(ISO2Code.chi).intValue() + 1); }
+      if (cos.get(word) != null) { matches.put(ISO2Code.cos, (matches.get(ISO2Code.cos) == null) ? 1 : matches.get(ISO2Code.cos).intValue() + 1); }
+      if (cym.get(word) != null) { matches.put(ISO2Code.cym, (matches.get(ISO2Code.cym) == null) ? 1 : matches.get(ISO2Code.cym).intValue() + 1); }
+      if (dan.get(word) != null) { matches.put(ISO2Code.dan, (matches.get(ISO2Code.dan) == null) ? 1 : matches.get(ISO2Code.dan).intValue() + 1); }
+      if (deu.get(word) != null) { matches.put(ISO2Code.deu, (matches.get(ISO2Code.deu) == null) ? 1 : matches.get(ISO2Code.deu).intValue() + 1); }
+      if (ell.get(word) != null) { matches.put(ISO2Code.ell, (matches.get(ISO2Code.ell) == null) ? 1 : matches.get(ISO2Code.ell).intValue() + 1); }
+      if (eng.get(word) != null) { matches.put(ISO2Code.eng, (matches.get(ISO2Code.eng) == null) ? 1 : matches.get(ISO2Code.eng).intValue() + 1); }
+      if (epo.get(word) != null) { matches.put(ISO2Code.epo, (matches.get(ISO2Code.epo) == null) ? 1 : matches.get(ISO2Code.epo).intValue() + 1); }
+      if (est.get(word) != null) { matches.put(ISO2Code.est, (matches.get(ISO2Code.est) == null) ? 1 : matches.get(ISO2Code.est).intValue() + 1); }
+      if (eus.get(word) != null) { matches.put(ISO2Code.eus, (matches.get(ISO2Code.eus) == null) ? 1 : matches.get(ISO2Code.eus).intValue() + 1); }
+      if (fas.get(word) != null) { matches.put(ISO2Code.fas, (matches.get(ISO2Code.fas) == null) ? 1 : matches.get(ISO2Code.fas).intValue() + 1); }
+      if (fil.get(word) != null) { matches.put(ISO2Code.fil, (matches.get(ISO2Code.fil) == null) ? 1 : matches.get(ISO2Code.fil).intValue() + 1); }
+      if (fin.get(word) != null) { matches.put(ISO2Code.fin, (matches.get(ISO2Code.fin) == null) ? 1 : matches.get(ISO2Code.fin).intValue() + 1); }
+      if (fre.get(word) != null) { matches.put(ISO2Code.fre, (matches.get(ISO2Code.fre) == null) ? 1 : matches.get(ISO2Code.fre).intValue() + 1); }
+      if (gla.get(word) != null) { matches.put(ISO2Code.gla, (matches.get(ISO2Code.gla) == null) ? 1 : matches.get(ISO2Code.gla).intValue() + 1); }
+      if (gle.get(word) != null) { matches.put(ISO2Code.gle, (matches.get(ISO2Code.gle) == null) ? 1 : matches.get(ISO2Code.gle).intValue() + 1); }
+      if (glg.get(word) != null) { matches.put(ISO2Code.glg, (matches.get(ISO2Code.glg) == null) ? 1 : matches.get(ISO2Code.glg).intValue() + 1); }
+      if (guj.get(word) != null) { matches.put(ISO2Code.guj, (matches.get(ISO2Code.guj) == null) ? 1 : matches.get(ISO2Code.guj).intValue() + 1); }
+      if (hat.get(word) != null) { matches.put(ISO2Code.hat, (matches.get(ISO2Code.hat) == null) ? 1 : matches.get(ISO2Code.hat).intValue() + 1); }
+      if (hau.get(word) != null) { matches.put(ISO2Code.hau, (matches.get(ISO2Code.hau) == null) ? 1 : matches.get(ISO2Code.hau).intValue() + 1); }
+      if (haw.get(word) != null) { matches.put(ISO2Code.haw, (matches.get(ISO2Code.haw) == null) ? 1 : matches.get(ISO2Code.haw).intValue() + 1); }
+      if (heb.get(word) != null) { matches.put(ISO2Code.heb, (matches.get(ISO2Code.heb) == null) ? 1 : matches.get(ISO2Code.heb).intValue() + 1); }
+      if (hin.get(word) != null) { matches.put(ISO2Code.hin, (matches.get(ISO2Code.hin) == null) ? 1 : matches.get(ISO2Code.hin).intValue() + 1); }
+      if (hmn.get(word) != null) { matches.put(ISO2Code.hmn, (matches.get(ISO2Code.hmn) == null) ? 1 : matches.get(ISO2Code.hmn).intValue() + 1); }
+      if (hun.get(word) != null) { matches.put(ISO2Code.hun, (matches.get(ISO2Code.hun) == null) ? 1 : matches.get(ISO2Code.hun).intValue() + 1); }
+      if (ibo.get(word) != null) { matches.put(ISO2Code.ibo, (matches.get(ISO2Code.ibo) == null) ? 1 : matches.get(ISO2Code.ibo).intValue() + 1); }
+      if (ind.get(word) != null) { matches.put(ISO2Code.ind, (matches.get(ISO2Code.ind) == null) ? 1 : matches.get(ISO2Code.ind).intValue() + 1); }
+      if (isl.get(word) != null) { matches.put(ISO2Code.isl, (matches.get(ISO2Code.isl) == null) ? 1 : matches.get(ISO2Code.isl).intValue() + 1); }
+      if (ita.get(word) != null) { matches.put(ISO2Code.ita, (matches.get(ISO2Code.ita) == null) ? 1 : matches.get(ISO2Code.ita).intValue() + 1); }
+      if (jav.get(word) != null) { matches.put(ISO2Code.jav, (matches.get(ISO2Code.jav) == null) ? 1 : matches.get(ISO2Code.jav).intValue() + 1); }
+      if (jpn.get(word) != null) { matches.put(ISO2Code.jpn, (matches.get(ISO2Code.jpn) == null) ? 1 : matches.get(ISO2Code.jpn).intValue() + 1); }
+      if (kan.get(word) != null) { matches.put(ISO2Code.kan, (matches.get(ISO2Code.kan) == null) ? 1 : matches.get(ISO2Code.kan).intValue() + 1); }
+      if (kat.get(word) != null) { matches.put(ISO2Code.kat, (matches.get(ISO2Code.kat) == null) ? 1 : matches.get(ISO2Code.kat).intValue() + 1); }
+      if (kaz.get(word) != null) { matches.put(ISO2Code.kaz, (matches.get(ISO2Code.kaz) == null) ? 1 : matches.get(ISO2Code.kaz).intValue() + 1); }
+      if (khm.get(word) != null) { matches.put(ISO2Code.khm, (matches.get(ISO2Code.khm) == null) ? 1 : matches.get(ISO2Code.khm).intValue() + 1); }
+      if (kin.get(word) != null) { matches.put(ISO2Code.kin, (matches.get(ISO2Code.kin) == null) ? 1 : matches.get(ISO2Code.kin).intValue() + 1); }
+      if (kir.get(word) != null) { matches.put(ISO2Code.kir, (matches.get(ISO2Code.kir) == null) ? 1 : matches.get(ISO2Code.kir).intValue() + 1); }
+      if (kor.get(word) != null) { matches.put(ISO2Code.kor, (matches.get(ISO2Code.kor) == null) ? 1 : matches.get(ISO2Code.kor).intValue() + 1); }
+      if (kur.get(word) != null) { matches.put(ISO2Code.kur, (matches.get(ISO2Code.kur) == null) ? 1 : matches.get(ISO2Code.kur).intValue() + 1); }
+      if (lao.get(word) != null) { matches.put(ISO2Code.lao, (matches.get(ISO2Code.lao) == null) ? 1 : matches.get(ISO2Code.lao).intValue() + 1); }
+      if (lat.get(word) != null) { matches.put(ISO2Code.lat, (matches.get(ISO2Code.lat) == null) ? 1 : matches.get(ISO2Code.lat).intValue() + 1); }
+      if (lav.get(word) != null) { matches.put(ISO2Code.lav, (matches.get(ISO2Code.lav) == null) ? 1 : matches.get(ISO2Code.lav).intValue() + 1); }
+      if (lit.get(word) != null) { matches.put(ISO2Code.lit, (matches.get(ISO2Code.lit) == null) ? 1 : matches.get(ISO2Code.lit).intValue() + 1); }
+      if (ltz.get(word) != null) { matches.put(ISO2Code.ltz, (matches.get(ISO2Code.ltz) == null) ? 1 : matches.get(ISO2Code.ltz).intValue() + 1); }
+      if (mal.get(word) != null) { matches.put(ISO2Code.mal, (matches.get(ISO2Code.mal) == null) ? 1 : matches.get(ISO2Code.mal).intValue() + 1); }
+      if (mar.get(word) != null) { matches.put(ISO2Code.mar, (matches.get(ISO2Code.mar) == null) ? 1 : matches.get(ISO2Code.mar).intValue() + 1); }
+      if (mkd.get(word) != null) { matches.put(ISO2Code.mkd, (matches.get(ISO2Code.mkd) == null) ? 1 : matches.get(ISO2Code.mkd).intValue() + 1); }
+      if (mlg.get(word) != null) { matches.put(ISO2Code.mlg, (matches.get(ISO2Code.mlg) == null) ? 1 : matches.get(ISO2Code.mlg).intValue() + 1); }
+      if (mlt.get(word) != null) { matches.put(ISO2Code.mlt, (matches.get(ISO2Code.mlt) == null) ? 1 : matches.get(ISO2Code.mlt).intValue() + 1); }
+      if (mon.get(word) != null) { matches.put(ISO2Code.mon, (matches.get(ISO2Code.mon) == null) ? 1 : matches.get(ISO2Code.mon).intValue() + 1); }
+      if (mri.get(word) != null) { matches.put(ISO2Code.mri, (matches.get(ISO2Code.mri) == null) ? 1 : matches.get(ISO2Code.mri).intValue() + 1); }
+      if (msa.get(word) != null) { matches.put(ISO2Code.msa, (matches.get(ISO2Code.msa) == null) ? 1 : matches.get(ISO2Code.msa).intValue() + 1); }
+      if (mya.get(word) != null) { matches.put(ISO2Code.mya, (matches.get(ISO2Code.mya) == null) ? 1 : matches.get(ISO2Code.mya).intValue() + 1); }
+      if (nep.get(word) != null) { matches.put(ISO2Code.nep, (matches.get(ISO2Code.nep) == null) ? 1 : matches.get(ISO2Code.nep).intValue() + 1); }
+      if (nld.get(word) != null) { matches.put(ISO2Code.nld, (matches.get(ISO2Code.nld) == null) ? 1 : matches.get(ISO2Code.nld).intValue() + 1); }
+      if (nor.get(word) != null) { matches.put(ISO2Code.nor, (matches.get(ISO2Code.nor) == null) ? 1 : matches.get(ISO2Code.nor).intValue() + 1); }
+      if (nya.get(word) != null) { matches.put(ISO2Code.nya, (matches.get(ISO2Code.nya) == null) ? 1 : matches.get(ISO2Code.nya).intValue() + 1); }
+      if (ori.get(word) != null) { matches.put(ISO2Code.ori, (matches.get(ISO2Code.ori) == null) ? 1 : matches.get(ISO2Code.ori).intValue() + 1); }
+      if (pan.get(word) != null) { matches.put(ISO2Code.pan, (matches.get(ISO2Code.pan) == null) ? 1 : matches.get(ISO2Code.pan).intValue() + 1); }
+      if (pol.get(word) != null) { matches.put(ISO2Code.pol, (matches.get(ISO2Code.pol) == null) ? 1 : matches.get(ISO2Code.pol).intValue() + 1); }
+      if (por.get(word) != null) { matches.put(ISO2Code.por, (matches.get(ISO2Code.por) == null) ? 1 : matches.get(ISO2Code.por).intValue() + 1); }
+      if (pus.get(word) != null) { matches.put(ISO2Code.pus, (matches.get(ISO2Code.pus) == null) ? 1 : matches.get(ISO2Code.pus).intValue() + 1); }
+      if (ron.get(word) != null) { matches.put(ISO2Code.ron, (matches.get(ISO2Code.ron) == null) ? 1 : matches.get(ISO2Code.ron).intValue() + 1); }
+      if (rus.get(word) != null) { matches.put(ISO2Code.rus, (matches.get(ISO2Code.rus) == null) ? 1 : matches.get(ISO2Code.rus).intValue() + 1); }
+      if (sin.get(word) != null) { matches.put(ISO2Code.sin, (matches.get(ISO2Code.sin) == null) ? 1 : matches.get(ISO2Code.sin).intValue() + 1); }
+      if (slk.get(word) != null) { matches.put(ISO2Code.slk, (matches.get(ISO2Code.slk) == null) ? 1 : matches.get(ISO2Code.slk).intValue() + 1); }
+      if (slv.get(word) != null) { matches.put(ISO2Code.slv, (matches.get(ISO2Code.slv) == null) ? 1 : matches.get(ISO2Code.slv).intValue() + 1); }
+      if (smo.get(word) != null) { matches.put(ISO2Code.smo, (matches.get(ISO2Code.smo) == null) ? 1 : matches.get(ISO2Code.smo).intValue() + 1); }
+      if (sna.get(word) != null) { matches.put(ISO2Code.sna, (matches.get(ISO2Code.sna) == null) ? 1 : matches.get(ISO2Code.sna).intValue() + 1); }
+      if (snd.get(word) != null) { matches.put(ISO2Code.snd, (matches.get(ISO2Code.snd) == null) ? 1 : matches.get(ISO2Code.snd).intValue() + 1); }
+      if (som.get(word) != null) { matches.put(ISO2Code.som, (matches.get(ISO2Code.som) == null) ? 1 : matches.get(ISO2Code.som).intValue() + 1); }
+      if (sot.get(word) != null) { matches.put(ISO2Code.sot, (matches.get(ISO2Code.sot) == null) ? 1 : matches.get(ISO2Code.sot).intValue() + 1); }
+      if (spa.get(word) != null) { matches.put(ISO2Code.spa, (matches.get(ISO2Code.spa) == null) ? 1 : matches.get(ISO2Code.spa).intValue() + 1); }
+      if (srp.get(word) != null) { matches.put(ISO2Code.srp, (matches.get(ISO2Code.srp) == null) ? 1 : matches.get(ISO2Code.srp).intValue() + 1); }
+      if (sun.get(word) != null) { matches.put(ISO2Code.sun, (matches.get(ISO2Code.sun) == null) ? 1 : matches.get(ISO2Code.sun).intValue() + 1); }
+      if (swa.get(word) != null) { matches.put(ISO2Code.swa, (matches.get(ISO2Code.swa) == null) ? 1 : matches.get(ISO2Code.swa).intValue() + 1); }
+      if (swe.get(word) != null) { matches.put(ISO2Code.swe, (matches.get(ISO2Code.swe) == null) ? 1 : matches.get(ISO2Code.swe).intValue() + 1); }
+      if (tam.get(word) != null) { matches.put(ISO2Code.tam, (matches.get(ISO2Code.tam) == null) ? 1 : matches.get(ISO2Code.tam).intValue() + 1); }
+      if (tat.get(word) != null) { matches.put(ISO2Code.tat, (matches.get(ISO2Code.tat) == null) ? 1 : matches.get(ISO2Code.tat).intValue() + 1); }
+      if (tel.get(word) != null) { matches.put(ISO2Code.tel, (matches.get(ISO2Code.tel) == null) ? 1 : matches.get(ISO2Code.tel).intValue() + 1); }
+      if (tgk.get(word) != null) { matches.put(ISO2Code.tgk, (matches.get(ISO2Code.tgk) == null) ? 1 : matches.get(ISO2Code.tgk).intValue() + 1); }
+      if (tha.get(word) != null) { matches.put(ISO2Code.tha, (matches.get(ISO2Code.tha) == null) ? 1 : matches.get(ISO2Code.tha).intValue() + 1); }
+      if (tuk.get(word) != null) { matches.put(ISO2Code.tuk, (matches.get(ISO2Code.tuk) == null) ? 1 : matches.get(ISO2Code.tuk).intValue() + 1); }
+      if (tur.get(word) != null) { matches.put(ISO2Code.tur, (matches.get(ISO2Code.tur) == null) ? 1 : matches.get(ISO2Code.tur).intValue() + 1); }
+      if (uig.get(word) != null) { matches.put(ISO2Code.uig, (matches.get(ISO2Code.uig) == null) ? 1 : matches.get(ISO2Code.uig).intValue() + 1); }
+      if (ukr.get(word) != null) { matches.put(ISO2Code.ukr, (matches.get(ISO2Code.ukr) == null) ? 1 : matches.get(ISO2Code.ukr).intValue() + 1); }
+      if (urd.get(word) != null) { matches.put(ISO2Code.urd, (matches.get(ISO2Code.urd) == null) ? 1 : matches.get(ISO2Code.urd).intValue() + 1); }
+      if (uzb.get(word) != null) { matches.put(ISO2Code.uzb, (matches.get(ISO2Code.uzb) == null) ? 1 : matches.get(ISO2Code.uzb).intValue() + 1); }
+      if (vie.get(word) != null) { matches.put(ISO2Code.vie, (matches.get(ISO2Code.vie) == null) ? 1 : matches.get(ISO2Code.vie).intValue() + 1); }
+      if (xho.get(word) != null) { matches.put(ISO2Code.xho, (matches.get(ISO2Code.xho) == null) ? 1 : matches.get(ISO2Code.xho).intValue() + 1); }
+      if (yid.get(word) != null) { matches.put(ISO2Code.yid, (matches.get(ISO2Code.yid) == null) ? 1 : matches.get(ISO2Code.yid).intValue() + 1); }
+      if (yor.get(word) != null) { matches.put(ISO2Code.yor, (matches.get(ISO2Code.yor) == null) ? 1 : matches.get(ISO2Code.yor).intValue() + 1); }
+      if (zul.get(word) != null) { matches.put(ISO2Code.zul, (matches.get(ISO2Code.zul) == null) ? 1 : matches.get(ISO2Code.zul).intValue() + 1); }
+    }
 
 
     Map.Entry<ISO2Code, Integer> matchedLanguage = new AbstractMap.SimpleEntry<ISO2Code, Integer>(ISO2Code.eng, (matches.get(ISO2Code.eng) == null) ? 0 : matches.get(ISO2Code.eng));
@@ -589,7 +588,7 @@ public class LanguageDetector {
 
   public static void main(String args[]){
     LanguageDetector languageDetector = new LanguageDetector();
-    String language = languageDetector.detectLanguage("हे कसे आहे?", true);
+    String language = languageDetector.detectLanguage("गाय", true);//ते काम करतंय का?
     System.out.println(language);
   }
 
