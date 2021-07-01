@@ -1,6 +1,6 @@
 # LanguageDetector
 
-##Determines Language Out of 107 Common Languages
+### Determines Language Out of 107 Common Languages
 
 
 This library is free to use. 
@@ -16,7 +16,7 @@ projects:
 - https://github.com/pemistahl/lingua
 - https://github.com/optimaize/language-detector
 
-##Using the Detector
+### Using the Detector
 
 Include the jar file found [here] (https://github.com/wbf22/LanguageDetector/tree/master/out/artifacts/LanguageDetector_jar)
 Then include it in your project. For example:
@@ -28,7 +28,7 @@ If you prefer, you're free to manually copy the files
 as an alternative. 
 
 
-###Example
+### Example
 
 All that is needed is to create a LanguageDetector object
 and then call detectLanguage() passing in a string. 
@@ -47,7 +47,7 @@ ISO2Code language = languageDetector.detectLanguage("Que idioma es este frase?",
 ```
 An enum 'ISO2Code' is included in this jar. See it [here] (https://github.com/wbf22/LanguageDetector/tree/master/src/main/java/Language/Detector)
 
-#List of Supported Languages
+### List of Supported Languages
 
 - Afrikaans
 - Albanian
