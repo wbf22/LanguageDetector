@@ -2,6 +2,7 @@ package Language.Detector;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.*;
 
 
@@ -116,8 +117,8 @@ public class LanguageDetector {
   private Map<String, Integer> zul = new HashMap<>();
 
 
-  public String detectLanguage(String text, boolean englishName){
-    if (englishName){
+  public String detectLanguage(String text, boolean getEnglishName){
+    if (getEnglishName){
       return detectLanguage(text).getName();
     }
     return detectLanguage(text).toString();
@@ -133,7 +134,7 @@ public class LanguageDetector {
 
     StringTokenizer stringTokenizer = new StringTokenizer(text.toLowerCase());
     List<String> textWords = new ArrayList<>();
-    while (stringTokenizer.hasMoreTokens()) textWords.add(stringTokenizer.nextToken());
+    while (stringTokenizer.hasMoreTokens()) textWords.add(removePunctuation(stringTokenizer.nextToken()));
 
     Map<ISO2Code, Integer> matches = new HashMap<>();
     for (String word : textWords) {
@@ -262,334 +263,341 @@ public class LanguageDetector {
   }
 
   private void indexLanguageFiles() throws FileNotFoundException {
-    Scanner scanner = new Scanner(new File("src/main/resources/afr.txt"));
+    Scanner scanner = new Scanner(this.getClass().getResourceAsStream("/afr.txt"));
     while(scanner.hasNext()){ afr.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/alb.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/alb.txt"));
     while(scanner.hasNext()){ alb.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/amh.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/amh.txt"));
     while(scanner.hasNext()){ amh.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/ara.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/ara.txt"));
     while(scanner.hasNext()){ ara.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/arm.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/arm.txt"));
     while(scanner.hasNext()){ arm.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/aze.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/aze.txt"));
     while(scanner.hasNext()){ aze.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/ben.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/ben.txt"));
     while(scanner.hasNext()){ ben.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/eus.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/eus.txt"));
     while(scanner.hasNext()){ eus.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/bel.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/bel.txt"));
     while(scanner.hasNext()){ bel.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/bos.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/bos.txt"));
     while(scanner.hasNext()){ bos.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/bul.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/bul.txt"));
     while(scanner.hasNext()){ bul.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/bur.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/bur.txt"));
     while(scanner.hasNext()){ bur.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/cat.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/cat.txt"));
     while(scanner.hasNext()){ cat.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/ceb.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/ceb.txt"));
     while(scanner.hasNext()){ ceb.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/chi.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/chi.txt"));
     while(scanner.hasNext()){ chi.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/cos.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/cos.txt"));
     while(scanner.hasNext()){ cos.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/ces.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/ces.txt"));
     while(scanner.hasNext()){ ces.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/dan.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/dan.txt"));
     while(scanner.hasNext()){ dan.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/eng.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/eng.txt"));
     while(scanner.hasNext()){ eng.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/epo.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/epo.txt"));
     while(scanner.hasNext()){ epo.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/est.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/est.txt"));
     while(scanner.hasNext()){ est.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/fil.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/fil.txt"));
     while(scanner.hasNext()){ fil.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/fin.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/fin.txt"));
     while(scanner.hasNext()){ fin.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/fre.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/fre.txt"));
     while(scanner.hasNext()){ fre.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/glg.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/glg.txt"));
     while(scanner.hasNext()){ glg.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/kat.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/kat.txt"));
     while(scanner.hasNext()){ kat.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/deu.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/deu.txt"));
     while(scanner.hasNext()){ deu.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/ell.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/ell.txt"));
     while(scanner.hasNext()){ ell.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/guj.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/guj.txt"));
     while(scanner.hasNext()){ guj.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/hat.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/hat.txt"));
     while(scanner.hasNext()){ hat.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/hau.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/hau.txt"));
     while(scanner.hasNext()){ hau.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/haw.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/haw.txt"));
     while(scanner.hasNext()){ haw.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/heb.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/heb.txt"));
     while(scanner.hasNext()){ heb.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/hin.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/hin.txt"));
     while(scanner.hasNext()){ hin.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/hmn.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/hmn.txt"));
     while(scanner.hasNext()){ hmn.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/hun.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/hun.txt"));
     while(scanner.hasNext()){ hun.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/isl.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/isl.txt"));
     while(scanner.hasNext()){ isl.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/ibo.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/ibo.txt"));
     while(scanner.hasNext()){ ibo.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/ind.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/ind.txt"));
     while(scanner.hasNext()){ ind.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/gle.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/gle.txt"));
     while(scanner.hasNext()){ gle.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/ita.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/ita.txt"));
     while(scanner.hasNext()){ ita.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/jpn.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/jpn.txt"));
     while(scanner.hasNext()){ jpn.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/jav.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/jav.txt"));
     while(scanner.hasNext()){ jav.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/kan.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/kan.txt"));
     while(scanner.hasNext()){ kan.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/kaz.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/kaz.txt"));
     while(scanner.hasNext()){ kaz.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/khm.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/khm.txt"));
     while(scanner.hasNext()){ khm.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/kin.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/kin.txt"));
     while(scanner.hasNext()){ kin.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/kor.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/kor.txt"));
     while(scanner.hasNext()){ kor.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/kur.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/kur.txt"));
     while(scanner.hasNext()){ kur.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/kir.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/kir.txt"));
     while(scanner.hasNext()){ kir.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/lao.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/lao.txt"));
     while(scanner.hasNext()){ lao.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/lat.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/lat.txt"));
     while(scanner.hasNext()){ lat.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/lav.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/lav.txt"));
     while(scanner.hasNext()){ lav.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/lit.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/lit.txt"));
     while(scanner.hasNext()){ lit.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/ltz.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/ltz.txt"));
     while(scanner.hasNext()){ ltz.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/mkd.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/mkd.txt"));
     while(scanner.hasNext()){ mkd.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/mlg.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/mlg.txt"));
     while(scanner.hasNext()){ mlg.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/msa.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/msa.txt"));
     while(scanner.hasNext()){ msa.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/mya.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/mya.txt"));
     while(scanner.hasNext()){ mya.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/nld.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/nld.txt"));
     while(scanner.hasNext()){ nld.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/mal.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/mal.txt"));
     while(scanner.hasNext()){ mal.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/mlt.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/mlt.txt"));
     while(scanner.hasNext()){ mlt.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/mri.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/mri.txt"));
     while(scanner.hasNext()){ mri.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/mar.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/mar.txt"));
     while(scanner.hasNext()){ mar.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/mon.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/mon.txt"));
     while(scanner.hasNext()){ mon.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/nep.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/nep.txt"));
     while(scanner.hasNext()){ nep.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/nor.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/nor.txt"));
     while(scanner.hasNext()){ nor.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/nya.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/nya.txt"));
     while(scanner.hasNext()){ nya.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/ori.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/ori.txt"));
     while(scanner.hasNext()){ ori.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/pus.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/pus.txt"));
     while(scanner.hasNext()){ pus.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/fas.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/fas.txt"));
     while(scanner.hasNext()){ fas.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/pol.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/pol.txt"));
     while(scanner.hasNext()){ pol.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/por.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/por.txt"));
     while(scanner.hasNext()){ por.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/pan.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/pan.txt"));
     while(scanner.hasNext()){ pan.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/ron.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/ron.txt"));
     while(scanner.hasNext()){ ron.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/rus.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/rus.txt"));
     while(scanner.hasNext()){ rus.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/smo.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/smo.txt"));
     while(scanner.hasNext()){ smo.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/gla.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/gla.txt"));
     while(scanner.hasNext()){ gla.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/srp.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/srp.txt"));
     while(scanner.hasNext()){ srp.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/sna.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/sna.txt"));
     while(scanner.hasNext()){ sna.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/snd.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/snd.txt"));
     while(scanner.hasNext()){ snd.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/sin.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/sin.txt"));
     while(scanner.hasNext()){ sin.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/slk.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/slk.txt"));
     while(scanner.hasNext()){ slk.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/slv.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/slv.txt"));
     while(scanner.hasNext()){ slv.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/som.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/som.txt"));
     while(scanner.hasNext()){ som.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/sot.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/sot.txt"));
     while(scanner.hasNext()){ sot.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/spa.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/spa.txt"));
     while(scanner.hasNext()){ spa.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/sun.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/sun.txt"));
     while(scanner.hasNext()){ sun.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/swa.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/swa.txt"));
     while(scanner.hasNext()){ swa.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/swe.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/swe.txt"));
     while(scanner.hasNext()){ swe.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/tgk.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/tgk.txt"));
     while(scanner.hasNext()){ tgk.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/tam.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/tam.txt"));
     while(scanner.hasNext()){ tam.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/tat.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/tat.txt"));
     while(scanner.hasNext()){ tat.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/tel.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/tel.txt"));
     while(scanner.hasNext()){ tel.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/tha.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/tha.txt"));
     while(scanner.hasNext()){ tha.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/tur.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/tur.txt"));
     while(scanner.hasNext()){ tur.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/tuk.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/tuk.txt"));
     while(scanner.hasNext()){ tuk.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/ukr.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/ukr.txt"));
     while(scanner.hasNext()){ ukr.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/urd.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/urd.txt"));
     while(scanner.hasNext()){ urd.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/uig.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/uig.txt"));
     while(scanner.hasNext()){ uig.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/uzb.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/uzb.txt"));
     while(scanner.hasNext()){ uzb.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/vie.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/vie.txt"));
     while(scanner.hasNext()){ vie.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/cym.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/cym.txt"));
     while(scanner.hasNext()){ cym.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/xho.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/xho.txt"));
     while(scanner.hasNext()){ xho.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/yid.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/yid.txt"));
     while(scanner.hasNext()){ yid.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/yor.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/yor.txt"));
     while(scanner.hasNext()){ yor.put(scanner.next(), 1); }
 
-    scanner = new Scanner(new File("src/main/resources/zul.txt"));
+    scanner = new Scanner(this.getClass().getResourceAsStream("/zul.txt"));
     while(scanner.hasNext()){ zul.put(scanner.next(), 1); }
 
   }
 
+  private String removePunctuation(String word){
+    String newWord = word;
+    if (!Character.isLetter(word.charAt(0))){
+      newWord = word.substring(1);
+    }
 
-  public static void main(String args[]){
-    LanguageDetector languageDetector = new LanguageDetector();
-    String language = languageDetector.detectLanguage("गाय", true);//ते काम करतंय का?
-    System.out.println(language);
+    if (!Character.isLetter(word.charAt(word.length() - 1))){
+      newWord = newWord.substring(0, newWord.length() - 1);
+    }
+
+    return newWord;
   }
+
 
 }

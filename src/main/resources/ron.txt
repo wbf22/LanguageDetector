@@ -2677,7 +2677,7 @@ teritoriu
 teroare
 terorism
 terorist
-Test
+Language.Detector.Tests
 depune mărturie
 mărturie
 testarea
