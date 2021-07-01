@@ -1,4 +1,5 @@
 # LanguageDetector
+
 ##Determines Language Out of 107 Common Languages
 
 
@@ -16,6 +17,7 @@ projects:
 - https://github.com/optimaize/language-detector
 
 ##Using the Detector
+
 Include the jar file found [here] (https://github.com/wbf22/LanguageDetector/tree/master/out/artifacts/LanguageDetector_jar)
 Then include it in your project. For example:
 in Intellij you would do this by going to File > 
@@ -27,6 +29,7 @@ as an alternative.
 
 
 ###Example
+
 All that is needed is to create a LanguageDetector object
 and then call detectLanguage() passing in a string. 
 
@@ -44,7 +47,7 @@ ISO2Code language = languageDetector.detectLanguage("Que idioma es este frase?",
 ```
 An enum 'ISO2Code' is included in this jar. See it [here] (https://github.com/wbf22/LanguageDetector/tree/master/src/main/java/Language/Detector)
 
-###List of Supported Languages
+#List of Supported Languages
 
 - Afrikaans
 - Albanian
