@@ -1,5 +1,5 @@
 # LanguageDetector
-####Determines Language Out of 107 Common Languages
+##Determines Language Out of 107 Common Languages
 
 
 This library is free to use. 
@@ -15,7 +15,7 @@ projects:
 - https://github.com/pemistahl/lingua
 - https://github.com/optimaize/language-detector
 
-###Using the Detector
+##Using the Detector
 Include the jar file found [here] (https://github.com/wbf22/LanguageDetector/tree/master/out/artifacts/LanguageDetector_jar)
 Then include it in your project. For example:
 in Intellij you would do this by going to File > 
