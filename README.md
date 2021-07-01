@@ -18,7 +18,7 @@ projects:
 
 ### Using the Detector
 
-Include the jar file found [here] (https://github.com/wbf22/LanguageDetector/tree/master/out/artifacts/LanguageDetector_jar)
+Include the jar file found [here](https://github.com/wbf22/LanguageDetector/tree/master/out/artifacts/LanguageDetector_jar)
 Then include it in your project. For example:
 in Intellij you would do this by going to File > 
 Project Structure > Libraries > + > Java and then finding
@@ -45,7 +45,7 @@ for more information.
 LanguageDetector languageDetector = new LanguageDetector();
 ISO2Code language = languageDetector.detectLanguage("Que idioma es este frase?", true);
 ```
-An enum 'ISO2Code' is included in this jar. See it [here] (https://github.com/wbf22/LanguageDetector/tree/master/src/main/java/Language/Detector)
+An enum 'ISO2Code' is included in this jar. See it [here](https://github.com/wbf22/LanguageDetector/tree/master/src/main/java/Language/Detector)
 
 ### List of Supported Languages
 
