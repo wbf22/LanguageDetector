@@ -7,6 +7,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Tests {
 
+  @Test
+  public void tester(){
+    LanguageDetector languageDetector = new LanguageDetector();
+    String language = languageDetector.detectLanguage("man it's not very good");
+    System.out.println(language);
+  }
 
   @Test
   public void simpleTest(){

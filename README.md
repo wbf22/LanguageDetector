@@ -10,7 +10,9 @@ common words in the bank of languages
 included in the project. Because of this,
 it is much more likely to determine the
 language correctly the longer the string
-is. If you'd like a more accurate detector, I 
+is. It was more a for fun project. 
+
+If you'd like a more accurate detector, I 
 would recommend using one of the following 
 projects:
 - https://github.com/pemistahl/lingua
