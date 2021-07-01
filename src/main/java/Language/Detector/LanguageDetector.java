@@ -117,14 +117,15 @@ public class LanguageDetector {
   private Map<String, Integer> zul = new HashMap<>();
 
 
-  public String detectLanguage(String text, boolean getEnglishName){
-    if (getEnglishName){
-      return detectLanguage(text).getName();
-    }
-    return detectLanguage(text).toString();
+  public ISO2Code detectLanguage(String text, boolean getIsoCode){
+    return doDetection(text);
   }
 
-  public ISO2Code detectLanguage(String text) {
+  public String detectLanguage(String text){
+    return doDetection(text).getName();
+  }
+
+  public ISO2Code doDetection(String text) {
     long start = System.currentTimeMillis();
     try {
       indexLanguageFiles();

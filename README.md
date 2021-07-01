@@ -9,13 +9,40 @@ common words in the bank of languages
 included in the project. Because of this,
 it is much more likely to determine the
 language correctly the longer the string
-is. 
+is. If you'd like a more accurate detector, I 
+would recommend using one of the following 
+projects:
+- https://github.com/pemistahl/lingua
+- https://github.com/optimaize/language-detector
 
 ###Using the Detector
-Download the jar file in the project and 
-import it into your editor/project. If you
-prefer, you're free to manually copy the files
+Include the jar file found [here] (https://github.com/wbf22/LanguageDetector/tree/master/out/artifacts/LanguageDetector_jar)
+Then include it in your project. For example:
+in Intellij you would do this by going to File > 
+Project Structure > Libraries > + > Java and then finding
+the file on your computer. 
+
+If you prefer, you're free to manually copy the files
 as an alternative. 
+
+
+###Example
+All that is needed is to create a LanguageDetector object
+and then call detectLanguage() passing in a string. 
+
+```
+LanguageDetector languageDetector = new LanguageDetector();
+String language = languageDetector.detectLanguage("Que idioma es este frase?");
+```
+
+If you want the standard ISO 639 2/T code for the language call detectLanguage() like
+this. See https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+for more information.
+```
+LanguageDetector languageDetector = new LanguageDetector();
+ISO2Code language = languageDetector.detectLanguage("Que idioma es este frase?", true);
+```
+An enum 'ISO2Code' is included in this jar. See it [here] (https://github.com/wbf22/LanguageDetector/tree/master/src/main/java/Language/Detector)
 
 ###List of Supported Languages
 

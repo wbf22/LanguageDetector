@@ -9,9 +9,17 @@ public class Tests {
 
 
   @Test
+  public void simpleTest(){
+    LanguageDetector languageDetector = new LanguageDetector();
+    ISO2Code language = languageDetector.detectLanguage("habla?", true);//ते काम करतंय का?
+    assertEquals(ISO2Code.spa, language);
+    System.out.println(language);
+  }
+
+  @Test
   public void punctuationTest(){
     LanguageDetector languageDetector = new LanguageDetector();
-    String language = languageDetector.detectLanguage("habla?", true);//ते काम करतंय का?
+    String language = languageDetector.detectLanguage("habla?");//ते काम करतंय का?
     assertEquals("Spanish", language);
     System.out.println(language);
   }
@@ -20,10 +28,10 @@ public class Tests {
   public void allLanguagesFourteenWords(){
 
     LanguageDetector languageDetector = new LanguageDetector();
-    String language = languageDetector.detectLanguage("Is dit die regte manier om huis toe te gaan? ek het so gedink", true);
+    String language = languageDetector.detectLanguage("Is dit die regte manier om huis toe te gaan? ek het so gedink");
     assertEquals("Afrikaans", language);
 
-    language = languageDetector.detectLanguage("Kjo është mënyra e saktë për në shtëpi? Unë mendova kështu", true);
+    language = languageDetector.detectLanguage("Kjo është mënyra e saktë për në shtëpi? Unë mendova kështu");
     assertEquals("Albanian", language);
 //    assertEquals("Amharic", language);
 //    assertEquals("Arabic", language);
@@ -136,10 +144,10 @@ public class Tests {
   public void keyLanguagesThreeWords(){
 
     LanguageDetector languageDetector = new LanguageDetector();
-    String language = languageDetector.detectLanguage("Is dit die regte manier om huis toe te gaan? ek het so gedink", true);
+    String language = languageDetector.detectLanguage("Is dit die regte manier om huis toe te gaan? ek het so gedink");
     assertEquals("Afrikaans", language);
 
-    language = languageDetector.detectLanguage("Kjo është mënyra e saktë për në shtëpi? Unë mendova kështu", true);
+    language = languageDetector.detectLanguage("Kjo është mënyra e saktë për në shtëpi? Unë mendova kështu");
     assertEquals("Albanian", language);
 //    assertEquals("Amharic", language);
 //    assertEquals("Arabic", language);
